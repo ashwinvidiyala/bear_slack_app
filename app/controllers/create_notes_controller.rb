@@ -1,0 +1,3 @@
+class CreateNotesController < ApplicationController
+
+end
