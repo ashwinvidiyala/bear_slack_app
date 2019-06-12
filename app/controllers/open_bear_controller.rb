@@ -13,7 +13,7 @@ class OpenBearController < ApplicationController
             type: 'button',
             text: 'Open Bear',
             url: 'bear://x-callback-url',
-            style: 'primary'
+            style: 'danger'
           }
         ]
       ]
