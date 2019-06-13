@@ -9,7 +9,7 @@ class OpenNoteController < ApplicationController
       channel: params[:channel_id],
       text: 'Click below to open the note',
       attachments: [
-        fallback: 'Create your note in Bear?',
+        fallback: 'Open your note in Bear',
         actions: [
           {
             type: 'button',
