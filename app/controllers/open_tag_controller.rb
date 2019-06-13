@@ -7,7 +7,7 @@ class OpenTagController < ApplicationController
 
     @slack_client.chat_postMessage(
       channel: params[:channel_id],
-      text: 'Click below to open the tag',
+      text: "Click below to open the ##{params[:text]}# tag",
       attachments: [
         fallback: 'Open your tag in Bear',
         actions: [
