@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   controller :open_tag do
     post 'open_tag'
   end
+
+  controller :grab_url do
+    post 'grab_url'
+  end
 end
