@@ -8,7 +8,6 @@ class OpenNoteController < ApplicationController
 
     @slack_client.chat_postMessage(
       channel: params[:channel_id],
-      # text: "What is going on <@#{params['user_name']}>?",
       text: 'Click below to open the note',
       attachments: [
         fallback: 'Create your note in Bear?',
