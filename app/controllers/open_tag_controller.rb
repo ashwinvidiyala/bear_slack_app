@@ -14,17 +14,11 @@ class OpenTagController < ApplicationController
           {
             type: 'button',
             text: 'Open Tag',
-            url: "bear://x-callback-url/open-tag?name=#{url_encoded_title}",
+            url: "bear://x-callback-url/open-tag?name=#{encode_text(params[:text])}",
             style: 'danger'
           }
         ]
       ]
     )
-  end
-
-  private
-
-  def url_encoded_title
-    params[:text].gsub(/ +/, '%20')
   end
 end

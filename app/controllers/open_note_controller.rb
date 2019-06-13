@@ -14,17 +14,11 @@ class OpenNoteController < ApplicationController
           {
             type: 'button',
             text: 'Open Note',
-            url: "bear://x-callback-url/open-note?title=#{url_encoded_title}",
+            url: "bear://x-callback-url/open-note?title=#{encode_text(params[:text])}",
             style: 'danger'
           }
         ]
       ]
     )
-  end
-
-  private
-
-  def url_encoded_title
-    params[:text].gsub(/ +/, '%20')
   end
 end
