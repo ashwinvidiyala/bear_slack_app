@@ -3,7 +3,6 @@
 # Creates notes in Bear
 class OpenNoteController < ApplicationController
   def open_note
-    # user = client.users_info(user: params[:user_id])
     @slack_client = Slack::Web::Client.new
 
     @slack_client.chat_postMessage(
