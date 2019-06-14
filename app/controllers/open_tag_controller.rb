@@ -7,18 +7,24 @@ class OpenTagController < ApplicationController
 
     @slack_client.chat_postMessage(
       channel: params[:channel_id],
-      text: "Click below to open the ##{params[:text]}# tag",
+      text: "Click below to open the ##{remove_hashtag(params[:text])}# tag",
       attachments: [
         fallback: 'Open your tag in Bear',
         actions: [
           {
             type: 'button',
             text: 'Open Tag',
-            url: "bear://x-callback-url/open-tag?name=#{url_encode_text(params[:text])}",
+            url: "bear://x-callback-url/open-tag?name=#{url_encode_text(remove_hashtag(params[:text]))}",
             style: 'danger'
           }
         ]
       ]
     )
+  end
+
+  private
+
+  def remove_hashtag(text)
+    text.tr('#', '')
   end
 end
