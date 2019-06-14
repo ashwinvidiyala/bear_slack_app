@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require 'erb'
+
 # Creates a note in Bear with the given URL's content
 class GrabUrlController < ApplicationController
+  include ERB::Util
+
   def grab_url
     SlackMessageBuilder.new.create_message(
       channel: params[:channel_id],
@@ -19,14 +23,14 @@ class GrabUrlController < ApplicationController
   end
 
   def url_input
-    parsed_input_text_parameter.first
+    url_encode(parsed_input_text_parameter.first)
   end
 
   def tags_input
     array_of_tags = parsed_input_text_parameter.drop(1).join(' ').split('#').map(&:strip).reject(&:empty?)
     string_of_tags = ''
     array_of_tags.each do |tag|
-      string_of_tags += url_encode_text(tag)
+      string_of_tags += url_encode(tag)
       string_of_tags += ','
     end
 
