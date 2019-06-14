@@ -3,22 +3,12 @@
 # Creates notes in Bear
 class OpenNoteController < ApplicationController
   def open_note
-    @slack_client = Slack::Web::Client.new
-
-    @slack_client.chat_postMessage(
+    SlackMessageBuilder.new.create_message(
       channel: params[:channel_id],
-      text: "Click below to open the note \"#{params[:text].titleize}\"",
-      attachments: [
-        fallback: 'Open your note in Bear',
-        actions: [
-          {
-            type: 'button',
-            text: 'Open Note',
-            url: "bear://x-callback-url/open-note?title=#{url_encode_text(params[:text])}",
-            style: 'danger'
-          }
-        ]
-      ]
+      message_text: "Click below to open the note \"#{params[:text].titleize}\"",
+      fallback: 'Open your note in Bear',
+      button_text: 'Open Note',
+      url: "bear://x-callback-url/open-note?title=#{url_encode_text(params[:text])}"
     )
   end
 end

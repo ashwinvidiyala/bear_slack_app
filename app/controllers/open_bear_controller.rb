@@ -1,22 +1,12 @@
 # Opens Bear
 class OpenBearController < ApplicationController
   def open_bear
-    @slack_client = Slack::Web::Client.new
-
-    @slack_client.chat_postMessage(
+    SlackMessageBuilder.new.create_message(
       channel: params[:channel_id],
-      text: "Please click on the button below to open Bear",
-      attachments: [
-        fallback: 'Open Bear',
-        actions: [
-          {
-            type: 'button',
-            text: 'Open Bear',
-            url: 'bear://x-callback-url',
-            style: 'danger'
-          }
-        ]
-      ]
+      message_text: "Please click on the button below to open Bear",
+      fallback: 'Open Bear',
+      button_text: 'Open Bear',
+      url: 'bear://x-callback-url'
     )
   end
 end

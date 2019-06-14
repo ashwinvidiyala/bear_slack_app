@@ -3,22 +3,12 @@
 # Creates a note in Bear with the given URL's content
 class GrabUrlController < ApplicationController
   def grab_url
-    @slack_client = Slack::Web::Client.new
-
-    @slack_client.chat_postMessage(
+    SlackMessageBuilder.new.create_message(
       channel: params[:channel_id],
-      text: "Click below to create a note in Bear with the given webpage's content ",
-      attachments: [
-        fallback: 'Create a note in Bear with content of the given webpage',
-        actions: [
-          {
-            type: 'button',
-            text: 'Grab URL',
-            url: "bear://x-callback-url/grab-url?url=#{url_input}&tags=#{tags_input}",
-            style: 'danger'
-          }
-        ]
-      ]
+      message_text: "Click below to create a note in Bear with the given webpage's content ",
+      fallback: 'Create a note in Bear with content of the given webpage',
+      button_text: 'Grab URL',
+      url: "bear://x-callback-url/grab-url?url=#{url_input}&tags=#{tags_input}"
     )
   end
 
