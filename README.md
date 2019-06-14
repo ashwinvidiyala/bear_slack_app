@@ -16,3 +16,7 @@ taking app [Bear](https://bear.app/) with [Slack](https://slack.com/).
     app and remove all the excess bloat. [This
 article](https://hashrocket.com/blog/posts/how-to-make-rails-5-api-only) is a
 good starting point.
+- [ ] Remove dependence on the [slack-ruby-client
+  gem](https://github.com/slack-ruby/slack-ruby-client). It shouldn't be too
+hard to do what you're doing here without the overhead of another dependency.
+But if it is, keep this gem :)
