@@ -36,7 +36,7 @@ class GrabUrlController < ApplicationController
     array_of_tags = parsed_input_text_parameter.drop(1).join(' ').split('#').map(&:strip).reject(&:empty?)
     string_of_tags = ''
     array_of_tags.each do |tag|
-      string_of_tags += encode_text(tag)
+      string_of_tags += url_encode_text(tag)
       string_of_tags += ','
     end
 

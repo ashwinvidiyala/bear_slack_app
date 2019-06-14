@@ -14,7 +14,7 @@ class OpenNoteController < ApplicationController
           {
             type: 'button',
             text: 'Open Note',
-            url: "bear://x-callback-url/open-note?title=#{encode_text(params[:text])}",
+            url: "bear://x-callback-url/open-note?title=#{url_encode_text(params[:text])}",
             style: 'danger'
           }
         ]

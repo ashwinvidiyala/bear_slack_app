@@ -14,7 +14,7 @@ class OpenTagController < ApplicationController
           {
             type: 'button',
             text: 'Open Tag',
-            url: "bear://x-callback-url/open-tag?name=#{encode_text(params[:text])}",
+            url: "bear://x-callback-url/open-tag?name=#{url_encode_text(params[:text])}",
             style: 'danger'
           }
         ]
